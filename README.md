@@ -4,6 +4,10 @@ jQuery plugin to create bootstrap 4 modals in pure JavaScript.
 
 [Demo Page](https://shaack.com/projekte/bootstrap-show-modal)
 
+## Installation
+
+`npm install` installs bootstrap, popper.js and jQuery, needed for bootstrap modals.
+
 ## Usage
 
 ### Simple
