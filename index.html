@@ -5,6 +5,16 @@
     <title>bootstrap-show-modal</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style type="text/css">
+        button {
+            margin-bottom: 0.5em;
+        }
+
+        pre.code {
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 <section class="container pt-5">
@@ -15,8 +25,26 @@
     <p><a href="https://github.com/shaack/bootstrap-modal-dialog">GitHub repository and documentation</a></p>
     <h2>Examples</h2>
     <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
+    <pre class="code">$.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})</pre>
     <button type="button" id="button-alert" class="btn btn-primary">Alert with fade effect</button>
+    <pre class="code">$.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})</pre>
     <button type="button" id="button-confirm" class="btn btn-primary">Confirm</button>
+    <pre class="code">
+$.showConfirm({
+    title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
+    confirmed: function (result) {
+        if (result) {
+            $.showAlert({title: "Result: " + result, body: "You like cats."})
+        } else {
+            $.showAlert({title: "Result: " + result, body: "You don't like cats."})
+        }
+    },
+    hidden: function () {
+        console.log("The dialog was hidden.")
+    }
+})
+    </pre>
+    <!-- <button type="button" id="button-form" class="btn btn-primary">Complex Form</button> -->
 </section>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
@@ -41,7 +69,7 @@
                     $.showAlert({title: "Result: " + result, body: "You don't like cats."})
                 }
             },
-            hidden: function() {
+            hidden: function () {
                 console.log("The dialog was hidden.")
             }
         })
