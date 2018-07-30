@@ -45,6 +45,44 @@ $.showConfirm({
 })
     </pre>
     <button type="button" id="button-form" class="btn btn-primary">Complex Form</button>
+    <pre class="code">
+$.showModal({
+    title: 'Complex Form',
+    body:
+        '&lt;div class="form-group row">' +
+        '&lt;div class="col-3">&lt;label for="text" class="col-form-label">Text&lt;/label>&lt;/div>' +
+        '&lt;div class="col-9">&lt;input type="text" class="form-control" id="text"/>&lt;/div>' +
+        '&lt;/div>' +
+        '&lt;div class="form-group row">' +
+        '&lt;div class="col-3">&lt;label for="select" class="col-form-label">Select&lt;/label>&lt;/div>' +
+        '&lt;div class="col-9">&lt;select id="select" class="form-control">' +
+        '&lt;option value="">&lt;/option>' +
+        '&lt;option value="red">red&lt;/option>&lt;option value="green">green&lt;/option>&lt;option value="blue">blue&lt;/option>' +
+        '&lt;/select>&lt;/div>' +
+        '&lt;/div>' +
+        '&lt;div class="form-group row">' +
+        '&lt;div class="col-3">&lt;label for="textarea" class="col-form-label">Textarea&lt;/label>&lt;/div>' +
+        '&lt;div class="col-9">&lt;textarea id="textarea" rows="5" class="form-control">&lt;/textarea>&lt;/div>' +
+        '&lt;/div>',
+    footer: '&lt;button type="submit" class="btn btn-primary">OK&lt;/button>',
+    created: function (modal) {
+        $(modal.element).on("submit", "form", function (event) {
+            event.preventDefault()
+            modal.props.submitted(modal)
+        })
+    },
+    submitted: function (modal) {
+        var $form = $(modal.element).find("form")
+        $.showAlert({title: "Result",
+            body:
+                "&lt;b>text:&lt;/b> " + $form.find("#text").val() + "&lt;br/>" +
+                "&lt;b>select:&lt;/b> " + $form.find("#select").val() + "&lt;br/>" +
+                "&lt;b>textarea:&lt;/b> " + $form.find("#textarea").val()
+        })
+        modal.hide()
+    }
+})
+    </pre>
 </section>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
@@ -71,6 +109,45 @@ $.showConfirm({
             },
             hidden: function () {
                 console.log("The dialog was hidden.")
+            }
+        })
+    })
+
+    document.getElementById("button-form").addEventListener("click", function () {
+        $.showModal({
+            title: 'Complex Form',
+            body:
+                '<div class="form-group row">' +
+                '<div class="col-3"><label for="text" class="col-form-label">Text</label></div>' +
+                '<div class="col-9"><input type="text" class="form-control" id="text"/></div>' +
+                '</div>' +
+                '<div class="form-group row">' +
+                '<div class="col-3"><label for="select" class="col-form-label">Select</label></div>' +
+                '<div class="col-9"><select id="select" class="form-control">' +
+                '<option value=""></option>' +
+                '<option value="red">red</option><option value="green">green</option><option value="blue">blue</option>' +
+                '</select></div>' +
+                '</div>' +
+                '<div class="form-group row">' +
+                '<div class="col-3"><label for="textarea" class="col-form-label">Textarea</label></div>' +
+                '<div class="col-9"><textarea id="textarea" rows="5" class="form-control"></textarea></div>' +
+                '</div>',
+            footer: '<button type="submit" class="btn btn-primary">OK</button>',
+            created: function (modal) {
+                $(modal.element).on("submit", "form", function (event) {
+                    event.preventDefault()
+                    modal.props.submitted(modal)
+                })
+            },
+            submitted: function (modal) {
+                var $form = $(modal.element).find("form")
+                $.showAlert({title: "Result",
+                    body:
+                        "<b>text:</b> " + $form.find("#text").val() + "<br/>" +
+                        "<b>select:</b> " + $form.find("#select").val() + "<br/>" +
+                        "<b>textarea:</b> " + $form.find("#textarea").val()
+                })
+                modal.hide()
             }
         })
     })
