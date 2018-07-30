@@ -36,7 +36,7 @@
 
     function Modal(props) {
         this.props = {
-            modalClass: "fade", // Additional css for ".modal"
+            modalClass: "", // Additional css for ".modal"
             modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm"
             options: null // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
         }
@@ -134,6 +134,13 @@
         },
         showConfirm: function (props, postCreate, callback) {
             props.footer = '<button class="btn btn-secondary btn-false">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
+            props.created = function (modal) {
+                $(modal.element).on("click", ".btn", function (event) {
+                    event.preventDefault()
+                    modal.hide()
+                    modal.props.confirmed(event.target.getAttribute("class").indexOf("btn-true") !== -1)
+                })
+            }
             return this.showModal(props, postCreate, callback)
         }
     })

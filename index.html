@@ -12,11 +12,10 @@
     <p class="mb-3">
         A jQuery plugin wrapper around Bootstrap 4 modals, to create modals dynamic in JavaScript.
     </p>
-    <h2>Source code and documentation</h2>
-    <p><a href="https://github.com/shaack/bootstrap-modal-dialog">GitHub repository</a></p>
+    <p><a href="https://github.com/shaack/bootstrap-modal-dialog">GitHub repository and documentation</a></p>
     <h2>Examples</h2>
     <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
-    <button type="button" id="button-alert" class="btn btn-primary">Alert</button>
+    <button type="button" id="button-alert" class="btn btn-primary">Alert with fade effect</button>
     <button type="button" id="button-confirm" class="btn btn-primary">Confirm</button>
 </section>
 
@@ -29,19 +28,12 @@
     })
 
     document.getElementById("button-alert").addEventListener("click", function () {
-        $.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
+        $.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})
     })
 
     document.getElementById("button-confirm").addEventListener("click", function () {
         $.showConfirm({
             title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
-            created: function (modal) {
-                $(modal.element).on("click", ".btn", function (event) {
-                    event.preventDefault()
-                    modal.hide()
-                    modal.props.confirmed(event.target.getAttribute("class").indexOf("btn-true") !== -1)
-                })
-            },
             confirmed: function (result) {
                 if (result) {
                     $.showAlert({title: "Result: " + result, body: "You like cats."})
