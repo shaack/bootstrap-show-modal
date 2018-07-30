@@ -48,6 +48,9 @@
                 } else {
                     $.showAlert({title: "Result: " + result, body: "You don't like cats."})
                 }
+            },
+            hidden: function() {
+                console.log("The dialog was hidden.")
             }
         })
     })

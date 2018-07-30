@@ -75,8 +75,11 @@
         $(this.element).on('hidden.bs.modal', function () {
             self.dispose()
             self.element = null
+            if (self.props.hidden) {
+                self.props.hidden(this)
+            }
         })
-        if(this.props.created) {
+        if (this.props.created) {
             this.props.created(this)
         }
     }
@@ -125,11 +128,11 @@
         showModal: function (props, postCreate, callback) {
             return new Modal(props, postCreate, callback)
         },
-        showAlert: function(props, postCreate, callback) {
+        showAlert: function (props, postCreate, callback) {
             props.footer = '<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>'
             return this.showModal(props, postCreate, callback)
         },
-        showConfirm: function(props, postCreate, callback) {
+        showConfirm: function (props, postCreate, callback) {
             props.footer = '<button class="btn btn-secondary btn-false">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
             return this.showModal(props, postCreate, callback)
         }
