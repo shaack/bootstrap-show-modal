@@ -53,6 +53,6 @@ props = {
 }
 ```
 
-[Also see the Bootstra 4 Modal documentation](https://getbootstrap.com/docs/4.0/components/modal/). 
+[Also see the Bootstrap 4 Modal documentation](https://getbootstrap.com/docs/4.0/components/modal/). 
 
 
