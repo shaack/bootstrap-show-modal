@@ -66,20 +66,18 @@ $.showModal({
         '&lt;/div>',
     footer: '&lt;button type="submit" class="btn btn-primary">OK&lt;/button>',
     onCreate: function (modal) {
+        // create event handler for form submit and handle values
         $(modal.element).on("submit", "form", function (event) {
             event.preventDefault()
-            modal.props.onSubmit(modal)
+            var $form = $(modal.element).find("form")
+            $.showAlert({title: "Result",
+                body:
+                    "&lt;b>text:&lt;/b> " + $form.find("#text").val() + "&lt;br/>" +
+                    "&lt;b>select:&lt;/b> " + $form.find("#select").val() + "&lt;br/>" +
+                    "&lt;b>textarea:&lt;/b> " + $form.find("#textarea").val()
+            })
+            modal.hide()
         })
-    },
-    onSubmit: function (modal) {
-        var $form = $(modal.element).find("form")
-        $.showAlert({title: "Result",
-            body:
-                "&lt;b>text:&lt;/b> " + $form.find("#text").val() + "&lt;br/>" +
-                "&lt;b>select:&lt;/b> " + $form.find("#select").val() + "&lt;br/>" +
-                "&lt;b>textarea:&lt;/b> " + $form.find("#textarea").val()
-        })
-        modal.hide()
     }
 })
     </pre>
@@ -134,20 +132,18 @@ $.showModal({
                 '</div>',
             footer: '<button type="submit" class="btn btn-primary">OK</button>',
             onCreate: function (modal) {
+                // create event handler for form submit and handle values
                 $(modal.element).on("submit", "form", function (event) {
                     event.preventDefault()
-                    modal.props.onSubmit(modal)
+                    var $form = $(modal.element).find("form")
+                    $.showAlert({title: "Result",
+                        body:
+                            "<b>text:</b> " + $form.find("#text").val() + "<br/>" +
+                            "<b>select:</b> " + $form.find("#select").val() + "<br/>" +
+                            "<b>textarea:</b> " + $form.find("#textarea").val()
+                    })
+                    modal.hide()
                 })
-            },
-            onSubmit: function (modal) {
-                var $form = $(modal.element).find("form")
-                $.showAlert({title: "Result",
-                    body:
-                        "<b>text:</b> " + $form.find("#text").val() + "<br/>" +
-                        "<b>select:</b> " + $form.find("#select").val() + "<br/>" +
-                        "<b>textarea:</b> " + $form.find("#textarea").val()
-                })
-                modal.hide()
             }
         })
     })
