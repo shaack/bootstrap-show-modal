@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>bootstrap-show-modal</title>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./node_modules/prismjs/themes/prism.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style type="text/css">
         button {
@@ -23,14 +24,22 @@
         A jQuery plugin wrapper around Bootstrap 4 modals, to create modals dynamically in JavaScript.
     </p>
     <p><a href="https://github.com/shaack/bootstrap-modal-dialog">GitHub repository and documentation</a></p>
+</section>
+<section class="container">
     <h2>Examples</h2>
-    <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
-    <pre class="code">$.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})</pre>
-    <button type="button" id="button-alert" class="btn btn-primary">Alert with fade effect</button>
-    <pre class="code">$.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})</pre>
-    <button type="button" id="button-confirm" class="btn btn-primary">Confirm</button>
-    <pre class="code">
-$.showConfirm({
+    <div class="pb-2">
+        <h3>Hello World!</h3>
+        <pre><code class="language-javascript">$.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})</code></pre>
+        <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
+    </div>
+    <div class="pb-2">
+        <h3>Alert with fade effect</h3>
+        <pre><code class="language-javascript">$.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
+        <button type="button" id="button-alert" class="btn btn-primary">Alert with fade effect</button>
+    </div>
+    <div class="pb-2">
+        <h3>Confirmation dialog</h3>
+        <pre><code class="language-javascript">$.showConfirm({
     title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
     onSubmit: function (result) {
         if (result) {
@@ -42,11 +51,12 @@ $.showConfirm({
     onDispose: function () {
         console.log("The confirm dialog vanished")
     }
-})
-    </pre>
-    <button type="button" id="button-form" class="btn btn-primary">Complex Form</button>
-    <pre class="code">
-$.showModal({
+})</code></pre>
+        <button type="button" id="button-confirm" class="btn btn-primary">Confirm</button>
+    </div>
+    <div class="pb-2">
+        <h3>Show a complex form and handle input</h3>
+        <pre><code class="language-javascript">$.showModal({
     title: 'Complex Form',
     body:
         '&lt;div class="form-group row">' +
@@ -79,13 +89,18 @@ $.showModal({
             modal.hide()
         })
     }
-})
-    </pre>
+})</code></pre>
+        <button type="button" id="button-form" class="btn btn-primary">Complex Form</button>
+    </div>
+    <p>If you like this plugin you may also want to checkout our <a href="https://shaack.com/projekte/bootstrap-input-spinner/">bootstrap-input-spinner</a></p>
+    <p>Thats all for now. If you find bugs or have suggestions, you may write an
+        <a href="https://github.com/shaack/bootstrap-show-modal/issues">issue</a>.</p>
 </section>
 
 <script src="./node_modules/jquery/dist/jquery.min.js"></script>
 <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="src/bootstrap-show-modal.js"></script>
+<script src="./node_modules/prismjs/prism.js"></script>
 <script>
     document.getElementById("button-hello-world").addEventListener("click", function () {
         $.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})
@@ -136,7 +151,8 @@ $.showModal({
                 $(modal.element).on("submit", "form", function (event) {
                     event.preventDefault()
                     var $form = $(modal.element).find("form")
-                    $.showAlert({title: "Result",
+                    $.showAlert({
+                        title: "Result",
                         body:
                             "<b>text:</b> " + $form.find("#text").val() + "<br/>" +
                             "<b>select:</b> " + $form.find("#select").val() + "<br/>" +
