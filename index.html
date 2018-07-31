@@ -74,7 +74,7 @@
         '&lt;div class="col-3">&lt;label for="textarea" class="col-form-label">Textarea&lt;/label>&lt;/div>' +
         '&lt;div class="col-9">&lt;textarea id="textarea" rows="5" class="form-control">&lt;/textarea>&lt;/div>' +
         '&lt;/div>',
-    footer: '&lt;button type="submit" class="btn btn-primary">OK&lt;/button>',
+    footer: '&lt;button type="button" class="btn btn-link" data-dismiss="modal">Cancel&lt;/button>&lt;button type="submit" class="btn btn-primary">Send&lt;/button>',
     onCreate: function (modal) {
         // create event handler for form submit and handle values
         $(modal.element).on("submit", "form", function (event) {
@@ -145,7 +145,7 @@
                 '<div class="col-3"><label for="textarea" class="col-form-label">Textarea</label></div>' +
                 '<div class="col-9"><textarea id="textarea" rows="5" class="form-control"></textarea></div>' +
                 '</div>',
-            footer: '<button type="submit" class="btn btn-primary">OK</button>',
+            footer: '<button type="button" class="btn btn-link" data-dismiss="modal">Cancel</button><button type="submit" class="btn btn-primary">Send</button>',
             onCreate: function (modal) {
                 // create event handler for form submit and handle values
                 $(modal.element).on("submit", "form", function (event) {
