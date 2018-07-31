@@ -39,8 +39,8 @@ $.showConfirm({
             $.showAlert({title: "Result: " + result, body: "You don't like cats."})
         }
     },
-    hidden: function () {
-        console.log("The dialog was hidden.")
+    onDispose: function () {
+        console.log("The confirm dialog vanished")
     }
 })
     </pre>
@@ -108,7 +108,7 @@ $.showModal({
                 }
             },
             onDispose: function () {
-                console.log("The dialog was hidden.")
+                console.log("The confirm dialog vanished")
             }
         })
     })

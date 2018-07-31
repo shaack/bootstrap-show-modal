@@ -17,9 +17,9 @@
             modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
             options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
             // Events:
-            onCreate: null, // Callback, called after the modal is created
-            onDispose: null, // Callback, called after the modal is disposed
-            onSubmit: null // $.showConfirm only. Callback, called after yes or no was pressed
+            onCreate: null, // Callback, called after the modal was created
+            onDispose: null, // Callback, called after the modal was disposed
+            onSubmit: null // Callback of $.showConfirm(), called after yes or no was pressed
         }
         Object.assign(this.props, props)
         this.id = "bootstrap-show-modal-" + i
@@ -55,10 +55,6 @@
         this.footerElement = this.element.querySelector(".modal-footer")
         $(this.element).on('hidden.bs.modal', function () {
             self.dispose()
-            self.element = null
-            if (self.props.onDispose) {
-                self.props.onDispose(this)
-            }
         })
         if (this.props.onCreate) {
             this.props.onCreate(this)
@@ -103,6 +99,9 @@
     Modal.prototype.dispose = function () {
         $(this.element).modal('dispose')
         document.body.removeChild(this.element)
+        if (this.props.onDispose) {
+            this.props.onDispose(this)
+        }
     }
 
     $.extend({

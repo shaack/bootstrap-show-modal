@@ -24,15 +24,15 @@ $.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you lik
 ```javascript
 $.showConfirm({
     title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
-    confirmed: function (result) { // callback on confirm
+    onSubmit: function (result) { // callback on confirm
         if (result) {
             $.showAlert({title: "Result: " + result, body: "You like cats."})
         } else {
             $.showAlert({title: "Result: " + result, body: "You don't like cats."})
         }
     },
-    hidden: function() { // callback on hide
-        console.log("The dialog was hidden.")
+    onDispose: function() {
+        console.log("The confirm dialog vanished")
     }
 })
 ```
@@ -48,8 +48,8 @@ props = {
     modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
     options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
     // Events:
-    onCreate: null, // Callback, called after the modal is created
-    onDispose: null, // Callback, called after the modal is disposed
+    onCreate: null, // Callback, called after the modal was created
+    onDispose: null, // Callback, called after the modal was disposed
     onSubmit: null // $.showConfirm only. Callback, called after yes or no was pressed
 }
 ```
