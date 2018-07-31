@@ -32,7 +32,7 @@
     <pre class="code">
 $.showConfirm({
     title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
-    confirmed: function (result) {
+    onSubmit: function (result) {
         if (result) {
             $.showAlert({title: "Result: " + result, body: "You like cats."})
         } else {
@@ -65,13 +65,13 @@ $.showModal({
         '&lt;div class="col-9">&lt;textarea id="textarea" rows="5" class="form-control">&lt;/textarea>&lt;/div>' +
         '&lt;/div>',
     footer: '&lt;button type="submit" class="btn btn-primary">OK&lt;/button>',
-    created: function (modal) {
+    onCreate: function (modal) {
         $(modal.element).on("submit", "form", function (event) {
             event.preventDefault()
-            modal.props.submitted(modal)
+            modal.props.onSubmit(modal)
         })
     },
-    submitted: function (modal) {
+    onSubmit: function (modal) {
         var $form = $(modal.element).find("form")
         $.showAlert({title: "Result",
             body:
@@ -100,14 +100,14 @@ $.showModal({
     document.getElementById("button-confirm").addEventListener("click", function () {
         $.showConfirm({
             title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
-            confirmed: function (result) {
+            onSubmit: function (result) {
                 if (result) {
                     $.showAlert({title: "Result: " + result, body: "You like cats."})
                 } else {
                     $.showAlert({title: "Result: " + result, body: "You don't like cats."})
                 }
             },
-            hidden: function () {
+            onDispose: function () {
                 console.log("The dialog was hidden.")
             }
         })
@@ -133,13 +133,13 @@ $.showModal({
                 '<div class="col-9"><textarea id="textarea" rows="5" class="form-control"></textarea></div>' +
                 '</div>',
             footer: '<button type="submit" class="btn btn-primary">OK</button>',
-            created: function (modal) {
+            onCreate: function (modal) {
                 $(modal.element).on("submit", "form", function (event) {
                     event.preventDefault()
-                    modal.props.submitted(modal)
+                    modal.props.onSubmit(modal)
                 })
             },
-            submitted: function (modal) {
+            onSubmit: function (modal) {
                 var $form = $(modal.element).find("form")
                 $.showAlert({title: "Result",
                     body:

@@ -10,9 +10,16 @@
     var i = 0
     function Modal(props) {
         this.props = {
-            modalClass: "", // Additional css for ".modal"
-            modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm"
-            options: null // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
+            title: "", // the dialog title html
+            body: "", // the dialog body html
+            footer: "", // the dialog footer html (mainly used for buttons)
+            modalClass: "", // Additional css for ".modal", like "fade" for fade effect
+            modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
+            options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
+            // Events:
+            onCreate: null, // Callback, called after the modal is created
+            onDispose: null, // Callback, called after the modal is disposed
+            onSubmit: null // $.showConfirm only. Callback, called after yes or no was pressed
         }
         Object.assign(this.props, props)
         this.id = "bootstrap-show-modal-" + i
@@ -49,12 +56,12 @@
         $(this.element).on('hidden.bs.modal', function () {
             self.dispose()
             self.element = null
-            if (self.props.hidden) {
-                self.props.hidden(this)
+            if (self.props.onDispose) {
+                self.props.onDispose(this)
             }
         })
-        if (this.props.created) {
-            this.props.created(this)
+        if (this.props.onCreate) {
+            this.props.onCreate(this)
         }
     }
 
@@ -99,23 +106,23 @@
     }
 
     $.extend({
-        showModal: function (props, postCreate, callback) {
-            return new Modal(props, postCreate, callback)
+        showModal: function (props) {
+            return new Modal(props)
         },
-        showAlert: function (props, postCreate, callback) {
+        showAlert: function (props) {
             props.footer = '<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>'
-            return this.showModal(props, postCreate, callback)
+            return this.showModal(props)
         },
-        showConfirm: function (props, postCreate, callback) {
+        showConfirm: function (props) {
             props.footer = '<button class="btn btn-secondary btn-false">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
-            props.created = function (modal) {
+            props.onCreate = function (modal) {
                 $(modal.element).on("click", ".btn", function (event) {
                     event.preventDefault()
                     modal.hide()
-                    modal.props.confirmed(event.target.getAttribute("class").indexOf("btn-true") !== -1)
+                    modal.props.onSubmit(event.target.getAttribute("class").indexOf("btn-true") !== -1)
                 })
             }
-            return this.showModal(props, postCreate, callback)
+            return this.showModal(props)
         }
     })
 

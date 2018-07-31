@@ -44,12 +44,13 @@ props = {
     title: "", // the dialog title html
     body: "", // the dialog body html
     footer: "", // the dialog footer html (mainly used for buttons)
-    created: null, // callback, called after the modal is created
-    hidden: null, // callback, called after the modal is hidden 
-    confirmed: null, // $.showConfirm only. callback, called after yes or no was pressed
     modalClass: "", // Additional css for ".modal", like "fade" for fade effect
     modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
-    options: null // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
+    options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
+    // Events:
+    onCreate: null, // Callback, called after the modal is created
+    onDispose: null, // Callback, called after the modal is disposed
+    onSubmit: null // $.showConfirm only. Callback, called after yes or no was pressed
 }
 ```
 
