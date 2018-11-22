@@ -28,9 +28,9 @@
         <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
     </div>
     <div class="pb-2">
-        <h3>Alert with fade effect</h3>
-        <pre><code class="language-javascript">$.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
-        <button type="button" id="button-alert" class="btn btn-primary">Alert with fade effect</button>
+        <h3>Alert (With "OK" Button)</h3>
+        <pre><code class="language-javascript">$.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
+        <button type="button" id="button-alert" class="btn btn-primary">Show Alert</button>
     </div>
     <div class="pb-2">
         <h3>Confirmation dialog</h3>
@@ -47,7 +47,7 @@
         console.log("The confirm dialog vanished")
     }
 })</code></pre>
-        <button type="button" id="button-confirm" class="btn btn-primary">Confirm</button>
+        <button type="button" id="button-confirm" class="btn btn-primary">Show Confirm</button>
     </div>
     <div class="pb-2">
         <h3>Show a complex form and handle input</h3>
@@ -86,7 +86,7 @@
         })
     }
 })</code></pre>
-        <button type="button" id="button-form" class="btn btn-primary">Complex Form</button>
+        <button type="button" id="button-form" class="btn btn-primary">Show a complex Form</button>
     </div>
     <p>If you like this plugin you may also want to check out our <a href="https://shaack.com/projekte/bootstrap-input-spinner/">bootstrap-input-spinner</a>.</p>
     <p>Thats all for now. If you find bugs or have suggestions, you may write an
@@ -103,7 +103,7 @@
     })
 
     document.getElementById("button-alert").addEventListener("click", function () {
-        $.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})
+        $.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
     })
 
     document.getElementById("button-confirm").addEventListener("click", function () {

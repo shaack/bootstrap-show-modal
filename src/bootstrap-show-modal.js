@@ -13,7 +13,7 @@
             title: "", // the dialog title html
             body: "", // the dialog body html
             footer: "", // the dialog footer html (mainly used for buttons)
-            modalClass: "", // Additional css for ".modal", like "fade" for fade effect
+            modalClass: "fade", // Additional css for ".modal", "fade" for fade effect
             modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
             options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
             // Events:
