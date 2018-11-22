@@ -43,10 +43,8 @@
             '<span aria-hidden="true">&times;</span>' +
             '</button>' +
             '</div>' +
-            '<form>' +
             '<div class="modal-body"></div>' +
             '<div class="modal-footer"></div>' +
-            '</form>' +
             '</div>' +
             '</div>'
         document.body.appendChild(this.element)
