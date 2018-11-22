@@ -14,17 +14,17 @@ Or just download this repository and include `src/bootstrap-show-modal.js`.
 
 ## Usage
 
-### Simple
+### Simple Modal
 ```javascript
 $.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})
 ```
 
-### Alert with fade effect
+### Alert Dialog
 ```javascript
-$.showAlert({modalClass: "fade", title: "Hi", body: "Please press ok, if you like or dislike cookies."})
+$.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
 ```
 
-### Confirm
+### Confirm Dialog
 ```javascript
 $.showConfirm({
     title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
@@ -48,7 +48,7 @@ props = {
     title: "", // the dialog title html
     body: "", // the dialog body html
     footer: "", // the dialog footer html (mainly used for buttons)
-    modalClass: "", // Additional css for ".modal", like "fade" for fade effect
+    modalClass: "fade", // Additional css for ".modal", "fade" for fade effect
     modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
     options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
     // Events:
