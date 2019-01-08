@@ -80,7 +80,7 @@ uglifyjs bootstrap-show-modal.js --compress --mangle > bootstrap-show-modal.min.
 
 ## Browser support
 
-The spinner works in all modern browsers and in the Internet Explorer. Not tested with IE < 11.
+It works in all modern browsers and in the Internet Explorer. Not tested with IE < 11.
  
 
 
