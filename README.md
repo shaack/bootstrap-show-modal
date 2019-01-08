@@ -4,6 +4,7 @@ jQuery plugin to create bootstrap 4 modals in pure JavaScript.
 
 [Demo Page](https://shaack.com/projekte/bootstrap-show-modal)
 
+
 ## Installation
 
 ```bash
@@ -58,6 +59,28 @@ props = {
 }
 ```
 
-[Also see the Bootstrap 4 Modal documentation](https://getbootstrap.com/docs/4.0/components/modal/). 
+See the [Bootstrap 4 Modal documentation](https://getbootstrap.com/docs/4.0/components/modal/) for possible
+values of `options`, `modalClass` and `modalDialogClass`.
+
+## Minified version
+
+I don't provide a minified version because I think it should be up to the using programmer 
+to create minified versions, with all the used script sources concatenated to one file.
+
+But, if you want it, it is easy to create your minified version with uglify: https://www.npmjs.com/package/uglify-js
+
+Just install uglify
+```bash
+npm install uglify-js -g
+```
+and then in the src-folder
+```bash
+uglifyjs bootstrap-show-modal.js --compress --mangle > bootstrap-show-modal.min.js
+```
+
+## Browser support
+
+The spinner works in all modern browsers and in the Internet Explorer. Not tested with IE < 11.
+ 
 
 
