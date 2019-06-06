@@ -29,10 +29,10 @@
   "homepage": "https://github.com/shaack/bootstrap-modal-dialog#readme",
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.7"
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
   },
   "devDependencies": {
-    "prismjs": "^1.15.0"
+    "prismjs": "^1.16.0"
   }
 }
