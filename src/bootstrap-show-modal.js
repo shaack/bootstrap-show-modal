@@ -10,6 +10,7 @@
     var i = 0
     function Modal(props) {
         this.props = {
+            textClose: "Close", // the dialog close button text
             title: "", // the dialog title html
             body: "", // the dialog body html
             footer: "", // the dialog footer html (mainly used for buttons)
@@ -41,7 +42,7 @@
             '<div class="modal-content">' +
             '<div class="modal-header">' +
             '<h5 class="modal-title"></h5>' +
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+            '<button type="button" class="close" data-dismiss="modal" aria-label="' + props.textClose + '">' +
             '<span aria-hidden="true">&times;</span>' +
             '</button>' +
             '</div>' +
