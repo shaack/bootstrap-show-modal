@@ -10,6 +10,7 @@
     var i = 0
     function Modal(props) {
         this.props = {
+            textOK: "OK", // the alert dialog button text
             title: "", // the dialog title html
             body: "", // the dialog body html
             footer: "", // the dialog footer html (mainly used for buttons)
@@ -109,7 +110,7 @@
             return new Modal(props)
         },
         showAlert: function (props) {
-            props.footer = '<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>'
+            props.footer = '<button type="button" class="btn btn-primary" data-dismiss="modal">' + props.textOK + '</button>'
             return this.showModal(props)
         },
         showConfirm: function (props) {
