@@ -22,6 +22,7 @@
             onSubmit: null // Callback of $.showConfirm(), called after yes or no was pressed
         }
         for (var prop in props) {
+            // noinspection JSUnfilteredForInLoop
             this.props[prop] = props[prop]
         }
         this.id = "bootstrap-show-modal-" + i
@@ -118,7 +119,7 @@
                 $(modal.element).on("click", ".btn", function (event) {
                     event.preventDefault()
                     modal.hide()
-                    modal.props.onSubmit(event.target.getAttribute("class").indexOf("btn-true") !== -1)
+                    modal.props.onSubmit(event.target.getAttribute("class").indexOf("btn-true") !== -1, modal)
                 })
             }
             return this.showModal(props)
