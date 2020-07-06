@@ -114,7 +114,7 @@
             return this.showModal(props)
         },
         showConfirm: function (props) {
-            props.footer = '<button class="btn btn-secondary btn-false">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
+            props.footer = '<button class="btn btn-secondary btn-false btn-cancel">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
             props.onCreate = function (modal) {
                 $(modal.element).on("click", ".btn", function (event) {
                     event.preventDefault()
