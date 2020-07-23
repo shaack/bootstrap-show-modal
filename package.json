@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shaack/bootstrap-modal-dialog.git"
+    "url": "git+https://github.com/shaack/bootstrap-show-modal.git"
   },
   "keywords": [
     "Bootstrap",
@@ -22,12 +22,12 @@
     "UI",
     "jquery-plugin"
   ],
-  "author": "Stefan Haack <shaack@gmail.com> (http://www.shaack.com)",
+  "author": "Stefan Haack <shaack@gmail.com> (https://shaack.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/shaack/bootstrap-modal-dialog/issues"
+    "url": "https://github.com/shaack/bootstrap-show-modal/issues"
   },
-  "homepage": "https://github.com/shaack/bootstrap-modal-dialog#readme",
+  "homepage": "https://github.com/shaack/bootstrap-show-modal",
   "dependencies": {
     "bootstrap": "^4.5.0",
     "jquery": "^3.5.1",
