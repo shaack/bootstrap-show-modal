@@ -8,6 +8,7 @@
     "use strict"
 
     var i = 0
+
     function Modal(props) {
         this.props = {
             title: "", // the dialog title html
@@ -105,12 +106,22 @@
         }
     }
 
+    // deprecated API
     $.extend({
         showModal: function (props) {
+            if (props.buttons) {
+                var footer = ""
+                for (var key in props.buttons) {
+                    // noinspection JSUnfilteredForInLoop
+                    var buttonText = props.buttons[key]
+                    footer += '<button type="button" class="btn btn-primary" data-value="' + key + '" data-dismiss="modal">' + buttonText + '</button>'
+                }
+                props.footer = footer
+            }
             return new Modal(props)
         },
-        showAlert: function (props) {
-            props.footer = '<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>'
+        showAlert: function (props) { // DEPRECATED, USE `$showModal({buttons: ['OK']})` instead
+            props.buttons = {OK: 'OK'}
             return this.showModal(props)
         },
         showConfirm: function (props) {
@@ -123,6 +134,21 @@
                 })
             }
             return this.showModal(props)
+        }
+    })
+
+    // new API
+    $.extend({
+        Modal: {
+            show: function (props) {
+                $.showModal(props)
+            },
+            alert: function (props) {
+                $.showAlert(props)
+            },
+            confirm: function (props) {
+                $.showConfirm(props)
+            }
         }
     })
 

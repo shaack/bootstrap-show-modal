@@ -24,17 +24,17 @@
     <h2>Examples</h2>
     <div class="pb-2">
         <h3>Hello World!</h3>
-        <pre><code class="language-javascript">$.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})</code></pre>
+        <pre><code class="language-javascript">$.Modal.show({title: "Hello World!", body: "A very simple modal dialog without buttons."})</code></pre>
         <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
     </div>
     <div class="pb-2">
         <h3>Alert (With "OK" Button)</h3>
-        <pre><code class="language-javascript">$.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
+        <pre><code class="language-javascript">$.Modal.alert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
         <button type="button" id="button-alert" class="btn btn-primary">Show Alert</button>
     </div>
     <div class="pb-2">
         <h3>Confirmation dialog</h3>
-        <pre><code class="language-javascript">$.showConfirm({
+        <pre><code class="language-javascript">$.Modal.confirm({
     title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
     onSubmit: function (result) {
         if (result) {
@@ -51,7 +51,7 @@
     </div>
     <div class="pb-2">
         <h3>Show a complex form and handle input</h3>
-        <pre><code class="language-javascript">$.showModal({
+        <pre><code class="language-javascript">$.Modal.show({
     title: 'Complex Form',
     body:
         '&lt;form>&lt;div class="form-group row">' +
@@ -88,7 +88,20 @@
 })</code></pre>
         <button type="button" id="button-form" class="btn btn-primary">Show a complex Form</button>
     </div>
-    <p>If you like this plugin you may also want to check out our <a href="https://shaack.com/projekte/bootstrap-input-spinner/">bootstrap-input-spinner</a>.</p>
+
+    <p>You may also want to check out our other Bootstrap 4 extensions</p>
+    <ul>
+        <li>
+            <a href="https://shaack.com/projekte/bootstrap-input-spinner/">bootstrap-input-spinner</a>
+        </li>
+        <li>
+            <a href="https://shaack.com/projekte/bootstrap-show-modal/">bootstrap-show-modal</a>
+        </li>
+        <li>
+            <a href="https://github.com/shaack/bootstrap-detect-breakpoint">bootstrap-detect-breakpoint</a>
+        </li>
+    </ul>
+
     <p>Thats all for now. If you find bugs or have suggestions, you may write an
         <a href="https://github.com/shaack/bootstrap-show-modal/issues">issue</a>.</p>
 </section>
@@ -99,15 +112,15 @@
 <script src="./node_modules/prismjs/prism.js"></script>
 <script>
     document.getElementById("button-hello-world").addEventListener("click", function () {
-        $.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})
+        $.Modal.show({title: "Hello World!", body: "A very simple modal dialog without buttons."})
     })
 
     document.getElementById("button-alert").addEventListener("click", function () {
-        $.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
+        $.Modal.alert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
     })
 
     document.getElementById("button-confirm").addEventListener("click", function () {
-        $.showConfirm({
+        $.Modal.confirm({
             title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
             onSubmit: function (result) {
                 if (result) {
@@ -123,7 +136,7 @@
     })
 
     document.getElementById("button-form").addEventListener("click", function () {
-        $.showModal({
+        $.Modal.show({
             title: 'Complex Form',
             body:
                 '<form><div class="form-group row">' +

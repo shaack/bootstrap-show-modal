@@ -19,7 +19,8 @@
     "Input",
     "Modal",
     "Dialog",
-    "UI"
+    "UI",
+    "jquery-plugin"
   ],
   "author": "Stefan Haack <shaack@gmail.com> (http://www.shaack.com)",
   "license": "MIT",
