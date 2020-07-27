@@ -82,5 +82,9 @@ uglifyjs bootstrap-show-modal.js --compress --mangle > bootstrap-show-modal.min.
 
 It works in all modern browsers and in the Internet Explorer. Not tested with IE < 11.
  
+# Our further Bootstrap and HTML extensions
 
+If you like this component, you may want to check out our other Bootstrap and HTML 
+extensions bootstrap-input-spinner, bootstrap-detect-breakpoint, 
+auto-resize-textarea and external-links-blank.
 
