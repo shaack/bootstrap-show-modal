@@ -137,19 +137,4 @@
         }
     })
 
-    // new API
-    $.extend({
-        Modal: {
-            show: function (props) {
-                $.showModal(props)
-            },
-            alert: function (props) {
-                $.showAlert(props)
-            },
-            confirm: function (props) {
-                $.showConfirm(props)
-            }
-        }
-    })
-
 }(jQuery))
