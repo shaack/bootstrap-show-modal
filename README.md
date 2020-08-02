@@ -82,9 +82,14 @@ uglifyjs bootstrap-show-modal.js --compress --mangle > bootstrap-show-modal.min.
 
 It works in all modern browsers and in the Internet Explorer. Not tested with IE < 11.
  
-# Our further Bootstrap and HTML extensions
+# More Bootstrap extensions from shaack.com
 
-If you like this component, you may want to check out our other Bootstrap and HTML 
-extensions [bootstrap-input-spinner](https://shaack.com/en/open-source-components), [bootstrap-detect-breakpoint](https://shaack.com/en/open-source-components), 
-[auto-resize-textarea](https://shaack.com/en/open-source-components) and [external-links-blank](https://shaack.com/en/open-source-components).
+You may want to check out our other Bootstrap and HTML extensions
+
+- [bootstrap-input-spinner](https://shaack.com/en/open-source-components) – Input numbers
+- [bootstrap-show-modal](https://shaack.com/en/open-source-components) – Show dialogs, dynamically
+- [bootstrap-show-notification](https://shaack.com/en/open-source-components) – Show notifications, dynamically
+- [bootstrap-detect-breakpoint](https://shaack.com/en/open-source-components) – Read the curr. BS BP from JS
+- [auto-resize-textarea](https://shaack.com/en/open-source-components) – Auto resize textareas by its content
+- [external-links-blank](https://shaack.com/en/open-source-components) – Open external links auto `_blank`
 
