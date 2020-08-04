@@ -119,7 +119,7 @@
             }
             return new Modal(props)
         },
-        showAlert: function (props) { // DEPRECATED, USE `$showModal({buttons: ['OK']})` instead
+        showAlert: function (props) {
             props.buttons = {OK: 'OK'}
             return this.showModal(props)
         },
