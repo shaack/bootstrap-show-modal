@@ -106,7 +106,6 @@
         }
     }
 
-    // deprecated API
     $.extend({
         showModal: function (props) {
             if (props.buttons) {
