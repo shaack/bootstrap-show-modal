@@ -29,6 +29,9 @@
         this.id = "bootstrap-show-modal-" + i
         i++
         this.show()
+        if (this.props.onCreate) {
+            this.props.onCreate(this)
+        }
     }
 
     Modal.prototype.createContainerElement = function () {
@@ -58,9 +61,6 @@
         $(this.element).on('hidden.bs.modal', function () {
             self.dispose()
         })
-        if (this.props.onCreate) {
-            this.props.onCreate(this)
-        }
     }
 
     Modal.prototype.show = function () {
