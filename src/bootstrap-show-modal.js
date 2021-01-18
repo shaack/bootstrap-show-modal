@@ -19,6 +19,7 @@
             options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
             // Events:
             onCreate: null, // Callback, called after the modal was created
+            onShown: null, // Callback, called after the modal was shown and completely faded in
             onDispose: null, // Callback, called after the modal was disposed
             onSubmit: null // Callback of $.showConfirm(), called after yes or no was pressed
         }
@@ -60,6 +61,11 @@
         this.footerElement = this.element.querySelector(".modal-footer")
         $(this.element).on('hidden.bs.modal', function () {
             self.dispose()
+        })
+        $(this.element).on('shown.bs.modal', function () {
+            if(self.props.onShown) {
+                self.props.onShown(this)
+            }
         })
     }
 
