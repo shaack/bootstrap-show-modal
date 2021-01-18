@@ -64,7 +64,7 @@
         })
         $(this.element).on('shown.bs.modal', function () {
             if(self.props.onShown) {
-                self.props.onShown(this)
+                self.props.onShown(self)
             }
         })
     }
