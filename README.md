@@ -8,7 +8,7 @@ jQuery plugin to create bootstrap 4 modals in pure JavaScript.
 ## Installation
 
 ```bash
-npm install -save bootstrap-show-modal
+npm install bootstrap-show-modal
 ```
 
 Or just download this repository and include `src/bootstrap-show-modal.js`.
