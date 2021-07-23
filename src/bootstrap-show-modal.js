@@ -16,7 +16,9 @@
             footer: "", // the dialog footer html (mainly used for buttons)
             modalClass: "fade", // Additional css for ".modal", "fade" for fade effect
             modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
-            options: null, // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
+            options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
+                backdrop: 'static' // disallow closing on click in the background
+            },
             // Events:
             onCreate: null, // Callback, called after the modal was created
             onShown: null, // Callback, called after the modal was shown and completely faded in
