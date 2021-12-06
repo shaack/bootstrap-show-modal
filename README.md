@@ -4,6 +4,9 @@ jQuery plugin to create bootstrap 4 modals in pure JavaScript.
 
 [Demo Page](https://shaack.com/projekte/bootstrap-show-modal)
 
+> This version is compatible with **Bootstrap 5**, but we remain a Bootstrap 4 compatible version with the branch
+> <a href="https://github.com/shaack/bootstrap-show-modal/tree/bootstrap4-compatible">bootstrap4-compatible</a>.
+> npm package versions 3.x are Bootstrap 5 compatible, versions 1.x Bootstrap 4 compatible.
 
 ## Installation
 
