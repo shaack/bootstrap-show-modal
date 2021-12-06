@@ -1,6 +1,6 @@
 # bootstrap-show-modal
 
-jQuery plugin to create bootstrap 4 modals in pure JavaScript.
+jQuery plugin to create bootstrap modals in pure JavaScript.
 
 [Demo Page](https://shaack.com/projekte/bootstrap-show-modal)
 
