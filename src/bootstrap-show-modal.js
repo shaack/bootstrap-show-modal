@@ -49,8 +49,7 @@
             '<div class="modal-content">' +
             '<div class="modal-header">' +
             '<h5 class="modal-title"></h5>' +
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-            '<span aria-hidden="true">&times;</span>' +
+            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">' +
             '</button>' +
             '</div>' +
             '<div class="modal-body"></div>' +
@@ -75,12 +74,15 @@
         if (!this.element) {
             this.createContainerElement()
             if (this.props.options) {
-                $(this.element).modal(this.props.options)
+                var modalInstance = new bootstrap.Modal(this.element, this.props.options)
+                if (modalInstance) { modalInstance.show() }
             } else {
-                $(this.element).modal()
+                var modalInstance = new bootstrap.Modal(this.element)
+                if (modalInstance) { modalInstance.show() }
             }
         } else {
-            $(this.element).modal('show')
+            var modalInstance = bootstrap.Modal.getInstance(this.element)
+            if (modalInstance) { modalInstance.show() }
         }
         if (this.props.title) {
             $(this.titleElement).show()
@@ -103,11 +105,13 @@
     }
 
     Modal.prototype.hide = function () {
-        $(this.element).modal('hide')
+        var modalInstance = bootstrap.Modal.getInstance(this.element)
+        if (modalInstance) { modalInstance.hide() }
     }
 
     Modal.prototype.dispose = function () {
-        $(this.element).modal('dispose')
+        var modalInstance = bootstrap.Modal.getInstance(this.element)
+        if (modalInstance) { modalInstance.dispose() }
         document.body.removeChild(this.element)
         if (this.props.onDispose) {
             this.props.onDispose(this)
@@ -121,7 +125,7 @@
                 for (var key in props.buttons) {
                     // noinspection JSUnfilteredForInLoop
                     var buttonText = props.buttons[key]
-                    footer += '<button type="button" class="btn btn-primary" data-value="' + key + '" data-dismiss="modal">' + buttonText + '</button>'
+                    footer += '<button type="button" class="btn btn-primary" data-value="' + key + '" data-bs-dismiss="modal">' + buttonText + '</button>'
                 }
                 props.footer = footer
             }
@@ -136,7 +140,8 @@
             props.onCreate = function (modal) {
                 $(modal.element).on("click", ".btn", function (event) {
                     event.preventDefault()
-                    modal.hide()
+                    var modalInstance = bootstrap.Modal.getInstance(modal.element)
+                    if (modalInstance) { modalInstance.hide() }
                     modal.props.onSubmit(event.target.getAttribute("class").indexOf("btn-true") !== -1, modal)
                 })
             }
