@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-show-modal",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "jQuery plugin to create bootstrap 4 modals in pure JavaScript",
   "main": "src/bootstrap-show-modal.js",
   "scripts": {
