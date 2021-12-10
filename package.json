@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-show-modal",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "jQuery plugin to create bootstrap 4 modals in pure JavaScript",
   "main": "src/bootstrap-show-modal.js",
   "scripts": {
@@ -27,8 +27,7 @@
     "url": "https://github.com/shaack/bootstrap-show-modal/issues"
   },
   "homepage": "https://github.com/shaack/bootstrap-show-modal",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "prismjs": "^1.25.0"
   }
