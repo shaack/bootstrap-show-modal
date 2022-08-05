@@ -1,12 +1,14 @@
 # bootstrap-show-modal
 
-jQuery plugin to create bootstrap modals in pure JavaScript.
+bootstrap plugin to create bootstrap modals in pure JavaScript.
 
 [Demo Page](https://shaack.com/projekte/bootstrap-show-modal)
 
 > This version is compatible with **Bootstrap 5**, but we remain a Bootstrap 4 compatible version with the branch
 > <a href="https://github.com/shaack/bootstrap-show-modal/tree/bootstrap4-compatible">bootstrap4-compatible</a>.
 > npm package versions 3.x are Bootstrap 5 compatible, versions 1.x Bootstrap 4 compatible.
+
+> **With version 5.x of bootstrap-shop-modal we completely removed jQuery**
 
 ## Installation
 
@@ -20,23 +22,23 @@ Or just download this repository and include `src/bootstrap-show-modal.js`.
 
 ### Simple Modal
 ```javascript
-$.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})
+bootstrap.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})
 ```
 
 ### Alert Dialog
 ```javascript
-$.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
+bootstrap.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
 ```
 
 ### Confirm Dialog
 ```javascript
-$.showConfirm({
+bootstrap.showConfirm({
     title: "Please confirm", body: "Do you like cats?", textTrue: "Yes", textFalse: "No",
     onSubmit: function (result) { // callback on confirm
         if (result) {
-            $.showAlert({title: "Result: " + result, body: "You like cats."})
+            bootstrap.showAlert({title: "Result: " + result, body: "You like cats."})
         } else {
-            $.showAlert({title: "Result: " + result, body: "You don't like cats."})
+            bootstrap.showAlert({title: "Result: " + result, body: "You don't like cats."})
         }
     },
     onDispose: function() {
@@ -61,7 +63,7 @@ this.props = {
     onCreate: null, // Callback, called after the modal was created
     onShown: null, // Callback, called after the modal was shown and completely faded in
     onDispose: null, // Callback, called after the modal was disposed
-    onSubmit: null // Callback of $.showConfirm(), called after yes or no was pressed
+    onSubmit: null // Callback of bootstrap.showConfirm(), called after yes or no was pressed
 }
 ```
 

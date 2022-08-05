@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-show-modal",
   "version": "3.0.4",
-  "description": "jQuery plugin to create bootstrap 4 modals in pure JavaScript",
+  "description": "bootstrap plugin to create modals in pure JavaScript, without jQuery",
   "main": "src/bootstrap-show-modal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,14 +12,11 @@
   },
   "keywords": [
     "Bootstrap",
-    "Bootstrap 4",
-    "jQuery",
     "Html",
     "Input",
     "Modal",
     "Dialog",
-    "UI",
-    "jquery-plugin"
+    "UI"
   ],
   "author": "Stefan Haack <shaack@gmail.com> (https://shaack.com)",
   "license": "MIT",

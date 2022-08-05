@@ -4,7 +4,7 @@
  * License: MIT, see file 'LICENSE'
  */
 
-(function ($) {
+(function (bootstrap) {
     "use strict"
 
     let i = 0
@@ -23,7 +23,7 @@
             onCreate: null, // Callback, called after the modal was created
             onShown: null, // Callback, called after the modal was shown and completely faded in
             onDispose: null, // Callback, called after the modal was disposed
-            onSubmit: null // Callback of $.showConfirm(), called after yes or no was pressed
+            onSubmit: null // Callback of bootstrap.showConfirm(), called after yes or no was pressed
         }
         for (let prop in props) {
             // noinspection JSUnfilteredForInLoop
@@ -60,10 +60,10 @@
         this.titleElement = this.element.querySelector(".modal-title")
         this.bodyElement = this.element.querySelector(".modal-body")
         this.footerElement = this.element.querySelector(".modal-footer")
-        $(this.element).on('hidden.bs.modal', function () {
+        this.element.addEventListener('hidden.bs.modal', function () {
             self.dispose()
         })
-        $(this.element).on('shown.bs.modal', function () {
+        this.element.addEventListener('shown.bs.modal', function () {
             if (self.props.onShown) {
                 self.props.onShown(self)
             }
@@ -91,22 +91,22 @@
             }
         }
         if (this.props.title) {
-            $(this.titleElement).show()
+            this.titleElement.style.display = ""
             this.titleElement.innerHTML = this.props.title
         } else {
-            $(this.titleElement).hide()
+            this.titleElement.style.display = "none"
         }
         if (this.props.body) {
-            $(this.bodyElement).show()
+            this.bodyElement.style.display = ""
             this.bodyElement.innerHTML = this.props.body
         } else {
-            $(this.bodyElement).hide()
+            this.bodyElement.style.display = "none"
         }
         if (this.props.footer) {
-            $(this.footerElement).show()
+            this.footerElement.style.display = ""
             this.footerElement.innerHTML = this.props.footer
         } else {
-            $(this.footerElement).hide()
+            this.footerElement.style.display = "none"
         }
     }
 
@@ -128,37 +128,40 @@
         }
     }
 
-    $.extend({
-        showModal: function (props) {
-            if (props.buttons) {
-                let footer = ""
-                for (let key in props.buttons) {
-                    // noinspection JSUnfilteredForInLoop
-                    const buttonText = props.buttons[key]
-                    footer += '<button type="button" class="btn btn-primary" data-value="' + key + '" data-bs-dismiss="modal">' + buttonText + '</button>'
-                }
-                props.footer = footer
+    bootstrap.showModal = function (props) {
+        if (props.buttons) {
+            let footer = ""
+            for (let key in props.buttons) {
+                // noinspection JSUnfilteredForInLoop
+                const buttonText = props.buttons[key]
+                footer += '<button type="button" class="btn btn-primary" data-value="' + key + '" data-bs-dismiss="modal">' + buttonText + '</button>'
             }
-            return new Modal(props)
-        },
-        showAlert: function (props) {
-            props.buttons = {OK: 'OK'}
-            return this.showModal(props)
-        },
-        showConfirm: function (props) {
-            props.footer = '<button class="btn btn-secondary btn-false btn-cancel">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
-            props.onCreate = function (modal) {
-                $(modal.element).on("click", ".btn", function (event) {
-                    event.preventDefault()
-                    const modalInstance = bootstrap.Modal.getInstance(modal.element)
-                    if (modalInstance) {
-                        modalInstance.hide()
-                    }
-                    modal.props.onSubmit(event.target.getAttribute("class").indexOf("btn-true") !== -1, modal)
-                })
-            }
-            return this.showModal(props)
+            props.footer = footer
         }
-    })
+        return new Modal(props)
+    }
+    bootstrap.showAlert = function (props) {
+        props.buttons = {OK: 'OK'}
+        return this.showModal(props)
+    }
+    bootstrap.showConfirm = function (props) {
+        props.footer = '<button class="btn btn-secondary btn-false btn-cancel">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
+        props.onCreate = function (modal) {
+            const modalInstance = bootstrap.Modal.getInstance(modal.element)
+            modal.element.querySelector(".btn-false").addEventListener("click", function(event) {
+                if (modalInstance) {
+                    modalInstance.hide()
+                }
+                modal.props.onSubmit(false, modal)
+            })
+            modal.element.querySelector(".btn-true").addEventListener("click", function(event) {
+                if (modalInstance) {
+                    modalInstance.hide()
+                }
+                modal.props.onSubmit(true, modal)
+            })
+        }
+        return this.showModal(props)
+    }
 
-}(jQuery))
+}(bootstrap))
