@@ -4,7 +4,7 @@
  * License: MIT, see file 'LICENSE'
  */
 
-(function (bootstrap) {
+;(function (bootstrap) {
     "use strict"
 
     let i = 0
