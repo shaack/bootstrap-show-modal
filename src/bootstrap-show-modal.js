@@ -86,8 +86,46 @@
                 }
             }
             const self = this
-            if(this.props.draggable) {
-                this.element.addEventListener('shown.bs.modal', function () {
+
+            this.element.addEventListener('shown.bs.modal', function () {
+
+                if (self.props.resizeable) {
+                    // alpha, resizing does not work yet
+                    const resizer = document.createElement('div')
+                    resizer.style.width = '20px'
+                    resizer.style.height = '20px'
+                    resizer.style.background = 'red'
+                    resizer.style.position = 'absolute'
+                    resizer.style.right = '0'
+                    resizer.style.bottom = '0'
+                    resizer.style.cursor = 'se-resize'
+
+                    self.modalContent = self.element.querySelector(".modal-content")
+                    self.modalContent.appendChild(resizer)
+
+                    resizer.addEventListener('mousedown', initResize, false)
+
+                    function initResize(e) {
+                        window.addEventListener('mousemove', resize, false)
+                        window.addEventListener('mouseup', stopResize, false)
+                        self.clientX = e.clientX
+                        self.clientY = e.clientY
+                    }
+
+                    function resize(e) {
+                        self.modalContent.style.width = self.modalContent.getBoundingClientRect().width + (e.clientX - self.clientX) + 'px'
+                        self.modalContent.style.height = self.modalContent.getBoundingClientRect().height + (e.clientY - self.clientY) + 'px'
+                        self.clientX = e.clientX
+                        self.clientY = e.clientY
+                    }
+
+                    function stopResize() {
+                        window.removeEventListener('mousemove', resize, false)
+                        window.removeEventListener('mouseup', stopResize, false)
+                    }
+                }
+
+                if (self.props.draggable) {
                     const dialogHeader = self.element.querySelector('.modal-header')
                     dialogHeader.style.cursor = 'move'
                     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
@@ -96,6 +134,7 @@
                     } else {
                         self.element.onmousedown = dragMouseDown
                     }
+
                     function dragMouseDown(e) {
                         // get the mouse cursor position at startup
                         pos3 = e.clientX
@@ -104,6 +143,7 @@
                         // call a function whenever the cursor moves
                         document.onmousemove = elementDrag
                     }
+
                     function elementDrag(e) {
                         // calculate the new cursor position
                         pos1 = pos3 - e.clientX
@@ -114,16 +154,18 @@
                         self.element.style.top = (self.element.offsetTop - pos2) + "px"
                         self.element.style.left = (self.element.offsetLeft - pos1) + "px"
                     }
+
                     function closeDragElement() {
                         // stop moving when mouse button is released
                         document.onmouseup = null
                         document.onmousemove = null
                     }
+
                     if (self.props.onShown) {
                         self.props.onShown(self)
                     }
-                })
-            }
+                }
+            })
         } else {
             const modalInstance = bootstrap.Modal.getInstance(this.element)
             if (modalInstance) {
@@ -188,13 +230,13 @@
         props.footer = '<button class="btn btn-secondary btn-false btn-cancel">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
         props.onCreate = function (modal) {
             const modalInstance = bootstrap.Modal.getInstance(modal.element)
-            modal.element.querySelector(".btn-false").addEventListener("click", function (event) {
+            modal.element.querySelector(".btn-false").addEventListener("click", function () {
                 if (modalInstance) {
                     modalInstance.hide()
                 }
                 modal.props.onSubmit(false, modal)
             })
-            modal.element.querySelector(".btn-true").addEventListener("click", function (event) {
+            modal.element.querySelector(".btn-true").addEventListener("click", function () {
                 if (modalInstance) {
                     modalInstance.hide()
                 }
