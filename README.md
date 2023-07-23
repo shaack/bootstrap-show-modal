@@ -59,6 +59,7 @@ this.props = {
     options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
         backdrop: 'static' // disallow closing on click in the background
     },
+    draggable: false, // make the dialog draggable 🆕
     // Events:
     onCreate: null, // Callback, called after the modal was created
     onShown: null, // Callback, called after the modal was shown and completely faded in

@@ -29,6 +29,11 @@
         <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
     </div>
     <div class="pb-2">
+        <h3>Hello World! draggable</h3>
+        <pre><code class="language-javascript"> bootstrap.showModal({title: "Hello World!", body: "This one is draggable.", draggable: true})</code></pre>
+        <button type="button" id="button-hello-world-draggable" class="btn btn-primary">Hello World! draggable</button>
+    </div>
+    <div class="pb-2">
         <h3>Alert (With "OK" Button)</h3>
         <pre><code class="language-javascript">bootstrap.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
         <button type="button" id="button-alert" class="btn btn-primary">Show Alert</button>
@@ -108,6 +113,10 @@
 <script>
     document.getElementById("button-hello-world").addEventListener("click", function () {
         bootstrap.showModal({title: "Hello World!", body: "A very simple modal dialog without buttons."})
+    })
+
+    document.getElementById("button-hello-world-draggable").addEventListener("click", function () {
+        bootstrap.showModal({title: "Hello World!", body: "This one is draggable.", draggable: true})
     })
 
     document.getElementById("button-alert").addEventListener("click", function () {

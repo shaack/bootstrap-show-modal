@@ -19,6 +19,7 @@
             options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
                 backdrop: 'static' // disallow closing on click in the background
             },
+            draggable: false, // make the dialog draggable
             // Events:
             onCreate: null, // Callback, called after the modal was created
             onShown: null, // Callback, called after the modal was shown and completely faded in
@@ -84,6 +85,45 @@
                     modalInstance.show()
                 }
             }
+            const self = this
+            if(this.props.draggable) {
+                this.element.addEventListener('shown.bs.modal', function () {
+                    const dialogHeader = self.element.querySelector('.modal-header')
+                    dialogHeader.style.cursor = 'move'
+                    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0
+                    if (dialogHeader) {
+                        dialogHeader.onmousedown = dragMouseDown
+                    } else {
+                        self.element.onmousedown = dragMouseDown
+                    }
+                    function dragMouseDown(e) {
+                        // get the mouse cursor position at startup
+                        pos3 = e.clientX
+                        pos4 = e.clientY
+                        document.onmouseup = closeDragElement
+                        // call a function whenever the cursor moves
+                        document.onmousemove = elementDrag
+                    }
+                    function elementDrag(e) {
+                        // calculate the new cursor position
+                        pos1 = pos3 - e.clientX
+                        pos2 = pos4 - e.clientY
+                        pos3 = e.clientX
+                        pos4 = e.clientY
+                        // set the element's new position
+                        self.element.style.top = (self.element.offsetTop - pos2) + "px"
+                        self.element.style.left = (self.element.offsetLeft - pos1) + "px"
+                    }
+                    function closeDragElement() {
+                        // stop moving when mouse button is released
+                        document.onmouseup = null
+                        document.onmousemove = null
+                    }
+                    if (self.props.onShown) {
+                        self.props.onShown(self)
+                    }
+                })
+            }
         } else {
             const modalInstance = bootstrap.Modal.getInstance(this.element)
             if (modalInstance) {
@@ -148,13 +188,13 @@
         props.footer = '<button class="btn btn-secondary btn-false btn-cancel">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
         props.onCreate = function (modal) {
             const modalInstance = bootstrap.Modal.getInstance(modal.element)
-            modal.element.querySelector(".btn-false").addEventListener("click", function(event) {
+            modal.element.querySelector(".btn-false").addEventListener("click", function (event) {
                 if (modalInstance) {
                     modalInstance.hide()
                 }
                 modal.props.onSubmit(false, modal)
             })
-            modal.element.querySelector(".btn-true").addEventListener("click", function(event) {
+            modal.element.querySelector(".btn-true").addEventListener("click", function (event) {
                 if (modalInstance) {
                     modalInstance.hide()
                 }
