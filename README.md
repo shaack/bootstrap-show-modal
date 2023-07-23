@@ -8,7 +8,7 @@ bootstrap plugin to create bootstrap modals in pure JavaScript.
 > <a href="https://github.com/shaack/bootstrap-show-modal/tree/bootstrap4-compatible">bootstrap4-compatible</a>.
 > npm package versions 3.x are Bootstrap 5 compatible, versions 1.x Bootstrap 4 compatible.
 
-> **With version 5.x of bootstrap-shop-modal we completely removed jQuery**
+> **With version 5.x of bootstrap-shop-modal we completely removed jQuery 🥳 🚀**
 
 ## Installation
 
