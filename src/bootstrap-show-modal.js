@@ -41,6 +41,7 @@
     Modal.prototype.createContainerElement = function () {
         const self = this
         this.element = document.createElement("div")
+        this.context = this.element
         this.element.id = this.id
         this.element.setAttribute("class", "modal " + this.props.modalClass)
         this.element.setAttribute("tabindex", "-1")
