@@ -26,6 +26,6 @@
   "homepage": "https://github.com/shaack/bootstrap-show-modal",
   "dependencies": {},
   "devDependencies": {
-    "prismjs": "^1.25.0"
+    "prismjs": "^1.29.0"
   }
 }
