@@ -4,12 +4,8 @@
  * License: MIT, see file 'LICENSE'
  */
 
-;(function (bootstrap) {
-    "use strict"
-
-    let i = 0
-
-    function Modal(props) {
+export class Modal {
+    constructor(props) {
         this.props = {
             title: "", // the dialog title html
             body: "", // the dialog body html
@@ -26,10 +22,7 @@
             onDispose: null, // Callback, called after the modal was disposed
             onSubmit: null // Callback of bootstrap.showConfirm(), called after yes or no was pressed
         }
-        for (let prop in props) {
-            // noinspection JSUnfilteredForInLoop
-            this.props[prop] = props[prop]
-        }
+        Object.assign(this.props, props)
         this.id = "bootstrap-show-modal-" + i
         i++
         this.show()
@@ -38,7 +31,7 @@
         }
     }
 
-    Modal.prototype.createContainerElement = function () {
+    createContainerElement() {
         const self = this
         this.element = document.createElement("div")
         this.context = this.element
@@ -72,7 +65,7 @@
         })
     }
 
-    Modal.prototype.show = function () {
+    show() {
         if (!this.element) {
             this.createContainerElement()
             if (this.props.options) {
@@ -193,14 +186,14 @@
         }
     }
 
-    Modal.prototype.hide = function () {
+    hide() {
         const modalInstance = bootstrap.Modal.getInstance(this.element)
         if (modalInstance) {
             modalInstance.hide()
         }
     }
 
-    Modal.prototype.dispose = function () {
+    dispose() {
         const modalInstance = bootstrap.Modal.getInstance(this.element)
         if (modalInstance) {
             modalInstance.dispose()
@@ -210,41 +203,44 @@
             this.props.onDispose(this)
         }
     }
+}
+if(!window.bootstrap) {
+    window.bootstrap = {}
+}
+let i = 0
+bootstrap.showModal = (props) => {
+    if (props.buttons) {
+        let footer = "";
+        for (let key in props.buttons) {
+            const buttonText = props.buttons[key];
+            footer += `<button type="button" class="btn btn-primary" data-value="${key}" data-bs-dismiss="modal">${buttonText}</button>`;
+        }
+        props.footer = footer;
+    }
+    return new Modal(props);
+};
 
-    bootstrap.showModal = function (props) {
-        if (props.buttons) {
-            let footer = ""
-            for (let key in props.buttons) {
-                // noinspection JSUnfilteredForInLoop
-                const buttonText = props.buttons[key]
-                footer += '<button type="button" class="btn btn-primary" data-value="' + key + '" data-bs-dismiss="modal">' + buttonText + '</button>'
+bootstrap.showAlert = (props) => {
+    props.buttons = {OK: 'OK'};
+    return bootstrap.showModal(props);
+};
+
+bootstrap.showConfirm = (props) => {
+    props.footer = `<button class="btn btn-secondary btn-false btn-cancel">${props.textFalse}</button><button class="btn btn-primary btn-true">${props.textTrue}</button>`;
+    props.onCreate = (modal) => {
+        const modalInstance = bootstrap.Modal.getInstance(modal.element);
+        modal.element.querySelector(".btn-false").addEventListener("click", function () {
+            if (modalInstance) {
+                modalInstance.hide();
             }
-            props.footer = footer
-        }
-        return new Modal(props)
-    }
-    bootstrap.showAlert = function (props) {
-        props.buttons = {OK: 'OK'}
-        return this.showModal(props)
-    }
-    bootstrap.showConfirm = function (props) {
-        props.footer = '<button class="btn btn-secondary btn-false btn-cancel">' + props.textFalse + '</button><button class="btn btn-primary btn-true">' + props.textTrue + '</button>'
-        props.onCreate = function (modal) {
-            const modalInstance = bootstrap.Modal.getInstance(modal.element)
-            modal.element.querySelector(".btn-false").addEventListener("click", function () {
-                if (modalInstance) {
-                    modalInstance.hide()
-                }
-                modal.props.onSubmit(false, modal)
-            })
-            modal.element.querySelector(".btn-true").addEventListener("click", function () {
-                if (modalInstance) {
-                    modalInstance.hide()
-                }
-                modal.props.onSubmit(true, modal)
-            })
-        }
-        return this.showModal(props)
-    }
-
-}(bootstrap))
+            modal.props.onSubmit(false, modal);
+        });
+        modal.element.querySelector(".btn-true").addEventListener("click", function () {
+            if (modalInstance) {
+                modalInstance.hide();
+            }
+            modal.props.onSubmit(true, modal);
+        });
+    };
+    return bootstrap.showModal(props);
+};
