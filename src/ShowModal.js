@@ -209,7 +209,7 @@ if (!window.bootstrap) {
     window.bootstrap = {}
 }
 let i = 0
-bootstrap.showModal = (props) => {
+window.bootstrap.showModal = (props) => {
     if (props.buttons) {
         let footer = ""
         for (let key in props.buttons) {
@@ -221,12 +221,12 @@ bootstrap.showModal = (props) => {
     return new Modal(props)
 }
 
-bootstrap.showAlert = (props) => {
+window.bootstrap.showAlert = (props) => {
     props.buttons = {OK: 'OK'}
     return bootstrap.showModal(props)
 }
 
-bootstrap.showConfirm = (props) => {
+window.bootstrap.showConfirm = (props) => {
     props.footer = `<button class="btn btn-secondary btn-false btn-cancel">${props.textFalse}</button><button class="btn btn-primary btn-true">${props.textTrue}</button>`
     props.onCreate = (modal) => {
         const modalInstance = bootstrap.Modal.getInstance(modal.element)
