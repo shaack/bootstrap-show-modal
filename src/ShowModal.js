@@ -204,43 +204,44 @@ export class Modal {
         }
     }
 }
-if(!window.bootstrap) {
+
+if (!window.bootstrap) {
     window.bootstrap = {}
 }
 let i = 0
 bootstrap.showModal = (props) => {
     if (props.buttons) {
-        let footer = "";
+        let footer = ""
         for (let key in props.buttons) {
-            const buttonText = props.buttons[key];
-            footer += `<button type="button" class="btn btn-primary" data-value="${key}" data-bs-dismiss="modal">${buttonText}</button>`;
+            const buttonText = props.buttons[key]
+            footer += `<button type="button" class="btn btn-primary" data-value="${key}" data-bs-dismiss="modal">${buttonText}</button>`
         }
-        props.footer = footer;
+        props.footer = footer
     }
-    return new Modal(props);
-};
+    return new Modal(props)
+}
 
 bootstrap.showAlert = (props) => {
-    props.buttons = {OK: 'OK'};
-    return bootstrap.showModal(props);
-};
+    props.buttons = {OK: 'OK'}
+    return bootstrap.showModal(props)
+}
 
 bootstrap.showConfirm = (props) => {
-    props.footer = `<button class="btn btn-secondary btn-false btn-cancel">${props.textFalse}</button><button class="btn btn-primary btn-true">${props.textTrue}</button>`;
+    props.footer = `<button class="btn btn-secondary btn-false btn-cancel">${props.textFalse}</button><button class="btn btn-primary btn-true">${props.textTrue}</button>`
     props.onCreate = (modal) => {
-        const modalInstance = bootstrap.Modal.getInstance(modal.element);
+        const modalInstance = bootstrap.Modal.getInstance(modal.element)
         modal.element.querySelector(".btn-false").addEventListener("click", function () {
             if (modalInstance) {
-                modalInstance.hide();
+                modalInstance.hide()
             }
-            modal.props.onSubmit(false, modal);
-        });
+            modal.props.onSubmit(false, modal)
+        })
         modal.element.querySelector(".btn-true").addEventListener("click", function () {
             if (modalInstance) {
-                modalInstance.hide();
+                modalInstance.hide()
             }
-            modal.props.onSubmit(true, modal);
-        });
-    };
-    return bootstrap.showModal(props);
-};
+            modal.props.onSubmit(true, modal)
+        })
+    }
+    return bootstrap.showModal(props)
+}
