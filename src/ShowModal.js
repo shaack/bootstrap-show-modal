@@ -12,6 +12,7 @@ export class Modal {
             footer: "", // the dialog footer html (mainly used for buttons)
             modalClass: "fade", // Additional css for ".modal", "fade" for fade effect
             modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
+            theme: undefined, // data-bs-theme
             options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
                 backdrop: 'static' // disallow closing on click in the background
             },
@@ -34,12 +35,19 @@ export class Modal {
     createContainerElement() {
         const self = this
         this.element = document.createElement("div")
-        this.context = this.element
         this.element.id = this.id
-        this.element.setAttribute("class", "modal " + this.props.modalClass)
+        let cssClass = "modal " + this.props.modalClass
+        // seems to be a bug in bootstrap, but I am not sure
+        if(this.props.theme === "dark") {
+            cssClass += " text-light"
+        }
+        this.element.setAttribute("class", cssClass)
         this.element.setAttribute("tabindex", "-1")
         this.element.setAttribute("role", "dialog")
         this.element.setAttribute("aria-labelledby", this.id)
+        if (this.props.theme) {
+            this.element.setAttribute("data-bs-theme", this.props.theme)
+        }
         this.element.innerHTML = '<div class="modal-dialog ' + this.props.modalDialogClass + '" role="document">' +
             '<div class="modal-content">' +
             '<div class="modal-header">' +

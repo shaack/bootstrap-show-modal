@@ -29,7 +29,7 @@
         <button type="button" id="button-hello-world" class="btn btn-primary">Hello World!</button>
     </div>
     <div class="pb-2">
-        <h3>Alert (With "OK" Button)</h3>
+        <h3>Dark themed Alert (With "OK" Button)</h3>
         <pre><code class="language-javascript">bootstrap.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})</code></pre>
         <button type="button" id="button-alert" class="btn btn-primary">Show Alert</button>
     </div>
@@ -112,7 +112,7 @@
     })
 
     document.getElementById("button-alert").addEventListener("click", function () {
-        bootstrap.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies."})
+        bootstrap.showAlert({title: "Hi", body: "Please press ok, if you like or dislike cookies.", theme: "dark"})
     })
 
     document.getElementById("button-confirm").addEventListener("click", function () {
