@@ -12,6 +12,9 @@ export class Modal {
             footer: "", // the dialog footer html (mainly used for buttons)
             modalClass: "fade", // Additional css for ".modal", "fade" for fade effect
             modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
+            headerClass: "", // Additional css for ".modal-header"
+            bodyClass: "", // Additional css for ".modal-body"
+            footerClass: "", // Additional css for ".modal-footer"
             theme: undefined, // data-bs-theme
             options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
                 backdrop: 'static' // disallow closing on click in the background
@@ -48,17 +51,17 @@ export class Modal {
         if (this.props.theme) {
             this.element.setAttribute("data-bs-theme", this.props.theme)
         }
-        this.element.innerHTML = '<div class="modal-dialog ' + this.props.modalDialogClass + '" role="document">' +
-            '<div class="modal-content">' +
-            '<div class="modal-header">' +
-            '<h5 class="modal-title"></h5>' +
-            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">' +
-            '</button>' +
-            '</div>' +
-            '<div class="modal-body"></div>' +
-            '<div class="modal-footer"></div>' +
-            '</div>' +
-            '</div>'
+        this.element.innerHTML = `
+<div class="modal-dialog ' + this.props.modalDialogClass + '" role="document">
+    <div class="modal-content">
+    <div class="modal-header ${this.props.headerClass}">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body ${this.props.bodyClass}"></div>
+    <div class="modal-footer ${this.props.footerClass}"></div>
+    </div>
+</div>`
         document.body.appendChild(this.element)
         this.titleElement = this.element.querySelector(".modal-title")
         this.bodyElement = this.element.querySelector(".modal-body")
