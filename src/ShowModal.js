@@ -52,7 +52,7 @@ export class Modal {
             this.element.setAttribute("data-bs-theme", this.props.theme)
         }
         this.element.innerHTML = `
-<div class="modal-dialog ' + this.props.modalDialogClass + '" role="document">
+<div class="modal-dialog ${this.props.modalDialogClass}" role="document">
     <div class="modal-content">
     <div class="modal-header ${this.props.headerClass}">
         <h5 class="modal-title"></h5>
