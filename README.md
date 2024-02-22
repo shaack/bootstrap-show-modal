@@ -16,7 +16,7 @@ bootstrap plugin to create bootstrap modals in pure JavaScript.
 npm install bootstrap-show-modal
 ```
 
-Or just download this repository and include `src/bootstrap-show-modal.js`.
+Or just download this repository and include `src/ShowModal.js`.
 
 ## Usage
 
@@ -84,7 +84,7 @@ npm install uglify-js -g
 ```
 and then in the src-folder
 ```bash
-uglifyjs bootstrap-show-modal.js --compress --mangle > bootstrap-show-modal.min.js
+uglifyjs ShowModal.js --compress --mangle > ShowModal.min.js
 ```
 
 ## Browser support
