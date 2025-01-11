@@ -10,7 +10,7 @@ bootstrap plugin to create bootstrap modals in pure JavaScript.
 
 ## References
 
-- [Demo pages with usage examples](https://shaack.com/projekte/bootstrap-show-modal)
+- [Demo page with usage examples](https://shaack.com/projekte/bootstrap-show-modal)
 - [GitHub repository](https://github.com/shaack/bootstrap-show-modal)
 - [npm package](https://www.npmjs.com/package/bootstrap-show-modal)
 
