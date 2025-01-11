@@ -2,13 +2,17 @@
 
 bootstrap plugin to create bootstrap modals in pure JavaScript.
 
-[Demo Page](https://shaack.com/projekte/bootstrap-show-modal)
-
 > This version is compatible with **Bootstrap 5**, but we remain a Bootstrap 4 compatible version with the branch
 > <a href="https://github.com/shaack/bootstrap-show-modal/tree/bootstrap4-compatible">bootstrap4-compatible</a>.
 > npm package versions 3.x are Bootstrap 5 compatible, versions 1.x Bootstrap 4 compatible.
 
 > **With version 5.x of bootstrap-shop-modal we completely removed jQuery 🥳 🚀**
+
+## References
+
+- [Demo pages with usage examples](https://shaack.com/projekte/bootstrap-show-modal)
+- [GitHub repository](https://github.com/shaack/bootstrap-show-modal)
+- [npm package](https://www.npmjs.com/package/bootstrap-show-modal)
 
 ## Installation
 
@@ -68,7 +72,7 @@ this.props = {
 }
 ```
 
-See the [Bootstrap 4 Modal documentation](https://getbootstrap.com/docs/4.0/components/modal/) for possible
+See the [Bootstrap Modal documentation](https://getbootstrap.com/docs/5.3/components/modal/) for possible
 values of `options`, `modalClass` and `modalDialogClass`.
 
 ## Minified version
@@ -91,12 +95,8 @@ uglifyjs ShowModal.js --compress --mangle > ShowModal.min.js
 
 It works in all modern browsers and in the Internet Explorer. Not tested with IE < 11.
  
-# You may want to check out my further Bootstrap and HTML extensions
+---
 
-- [bootstrap-input-spinner](https://shaack.com/projekte/bootstrap-input-spinner/) – Input numbers
-- [bootstrap-show-modal](https://shaack.com/projekte/bootstrap-show-modal/) – Show dialogs, dynamically
-- [bootstrap-show-notification](https://shaack.com/projekte/bootstrap-show-notification/) – Show notifications, dynamically
-- [bootstrap-detect-breakpoint](https://www.npmjs.com/package/bootstrap-detect-breakpoint) – Read the curr. BS BP from JS
-- [auto-resize-textarea](https://shaack.com/projekte/auto-resize-textarea/) – Auto resize textareas by its content
-- [external-links-blank](https://www.npmjs.com/package/external-links-blank) – Open all external links `_blank`
+Find more high quality modules from [shaack.com](https://shaack.com)
+on [our projects page](https://shaack.com/works).
 
