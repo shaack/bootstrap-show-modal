@@ -51,6 +51,18 @@
         <button type="button" id="button-confirm" class="btn btn-primary">Show Confirm</button>
     </div>
     <div class="pb-2">
+        <h3>Confirmation dialog with custom button classes</h3>
+        <pre><code class="language-javascript">bootstrap.showConfirm({
+    title: "Delete file?", body: "This cannot be undone.",
+    textTrue: "Delete", classTrue: "btn btn-danger",
+    textFalse: "Cancel", classFalse: "btn btn-outline-secondary",
+    onSubmit: function (result) {
+        bootstrap.showAlert({title: "Result: " + result, body: result ? "Deleted." : "Canceled."})
+    }
+})</code></pre>
+        <button type="button" id="button-confirm-danger" class="btn btn-primary">Show Confirm with custom buttons</button>
+    </div>
+    <div class="pb-2">
         <h3>Show a complex form and handle input</h3>
         <pre><code class="language-javascript">bootstrap.showModal({
     title: 'Complex Form',
@@ -127,6 +139,17 @@
             },
             onDispose: function () {
                 console.log("The confirm dialog vanished")
+            }
+        })
+    })
+
+    document.getElementById("button-confirm-danger").addEventListener("click", function () {
+        bootstrap.showConfirm({
+            title: "Delete file?", body: "This cannot be undone.",
+            textTrue: "Delete", classTrue: "btn btn-danger",
+            textFalse: "Cancel", classFalse: "btn btn-outline-secondary",
+            onSubmit: function (result) {
+                bootstrap.showAlert({title: "Result: " + result, body: result ? "Deleted." : "Canceled."})
             }
         })
     })

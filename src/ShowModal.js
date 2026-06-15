@@ -15,6 +15,8 @@ export class Modal {
             headerClass: "", // Additional css for ".modal-header"
             bodyClass: "", // Additional css for ".modal-body"
             footerClass: "", // Additional css for ".modal-footer"
+            closeButtonClass: "", // Additional css for the header close button, e.g. "btn-close-white" on dark themes
+            closeButtonLabel: "Close", // aria-label of the header close button, for i18n
             theme: undefined, // data-bs-theme
             options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
                 backdrop: 'static' // disallow closing on click in the background
@@ -56,7 +58,7 @@ export class Modal {
     <div class="modal-content">
     <div class="modal-header ${this.props.headerClass}">
         <h5 class="modal-title"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close ${this.props.closeButtonClass}" data-bs-dismiss="modal" aria-label="${this.props.closeButtonLabel}"></button>
     </div>
     <div class="modal-body ${this.props.bodyClass}"></div>
     <div class="modal-footer ${this.props.footerClass}"></div>
@@ -154,7 +156,12 @@ bootstrap.showAlert = (props) => {
 }
 
 bootstrap.showConfirm = (props) => {
-    props.footer = `<button class="btn btn-secondary btn-false btn-cancel">${props.textFalse}</button><button class="btn btn-primary btn-true">${props.textTrue}</button>`
+    // Button classes are customizable (e.g. `classTrue: "btn btn-danger"` for a
+    // destructive action). The internal marker classes `btn-true`/`btn-false`
+    // are always appended so the click handlers below keep working.
+    const classTrue = props.classTrue || "btn btn-primary"
+    const classFalse = props.classFalse || "btn btn-secondary"
+    props.footer = `<button class="${classFalse} btn-false btn-cancel">${props.textFalse}</button><button class="${classTrue} btn-true">${props.textTrue}</button>`
     props.onCreate = (modal) => {
         const modalInstance = bootstrap.Modal.getInstance(modal.element)
         modal.element.querySelector(".btn-false").addEventListener("click", function () {

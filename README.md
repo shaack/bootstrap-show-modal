@@ -51,6 +51,19 @@ bootstrap.showConfirm({
 })
 ```
 
+Use `classTrue` and `classFalse` to customize the button classes, for example a red
+confirm button for a destructive action. They default to `"btn btn-primary"` and
+`"btn btn-secondary"`.
+
+```javascript
+bootstrap.showConfirm({
+    title: "Delete file?", body: "This cannot be undone.",
+    textTrue: "Delete", classTrue: "btn btn-danger",
+    textFalse: "Cancel", classFalse: "btn btn-outline-secondary",
+    onSubmit: function (result) { /* ... */ }
+})
+```
+
 ## Properties
 
 ```javascript
@@ -60,6 +73,8 @@ this.props = {
     footer: "", // the dialog footer html (mainly used for buttons)
     modalClass: "fade", // Additional css for ".modal", "fade" for fade effect
     modalDialogClass: "", // Additional css for ".modal-dialog", like "modal-lg" or "modal-sm" for sizing
+    closeButtonClass: "", // Additional css for the header close button, e.g. "btn-close-white" on dark themes
+    closeButtonLabel: "Close", // aria-label of the header close button, for i18n
     options: { // The Bootstrap modal options as described here: https://getbootstrap.com/docs/4.0/components/modal/#options
         backdrop: 'static' // disallow closing on click in the background
     },
